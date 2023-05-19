@@ -52,16 +52,30 @@ $hotels = [
 
 ];
 
+// $scegliParcheggio = $_GET['parking'];
+// $scegliVoto = $_GET['vote'];
+
+// if($scegliParcheggio == si){
+//     echo $hotel['parking'];
+// };
+
+$hotelFiltrati = $hotels;
+
+if (isset($_GET['parking'])) {
+    $hotelFiltrati = array_filter($hotelFiltrati, function ($hotel) {
+        return $hotel['parking'] == true;
+    });
+}
+
 
 
 ?>
 
 <div class="container">
     <div class="row">
-
         <form method="GET" action="index.php">
         <label for="parking">Parcheggio disponibile:</label>
-        <input type="checkbox" id="parking" name="parking" value="1">
+        <input type="checkbox" id="parking" name="parking">
         <br>
         <label for="vote">Voto minimo:</label>
         <input type="number" id="vote" name="vote" min="1" max="5">
@@ -80,7 +94,7 @@ $hotels = [
             </tr>
             </thead>
             <tbody>
-                <?php foreach ($hotels as $hotel) { ?>
+                <?php foreach ($hotelFiltrati as $hotel) { ?>
                     <tr>
                     <th><?php echo $hotel['name']; ?></th>
                     <td><?php echo $hotel['description']; ?></td>
