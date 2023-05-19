@@ -52,11 +52,24 @@ $hotels = [
 
 ];
 
+
+
 ?>
 
 <div class="container">
     <div class="row">
-        <table class=" table-striped">
+
+        <form method="GET" action="index.php">
+        <label for="parking">Parcheggio disponibile:</label>
+        <input type="checkbox" id="parking" name="parking" value="1">
+        <br>
+        <label for="vote">Voto minimo:</label>
+        <input type="number" id="vote" name="vote" min="1" max="5">
+        <br>
+        <input type="submit" value="Filtra">
+        </form>
+
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Nome</th>
