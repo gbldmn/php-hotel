@@ -67,6 +67,11 @@ if (isset($_GET['parking'])) {
     });
 }
 
+ if (isset($_GET['vote'])) {
+     $hotelFiltrati = array_filter($hotelFiltrati, function ($hotel) {
+         return $hotel['vote'] >= $_GET['vote'];
+     });
+ }
 
 
 ?>
